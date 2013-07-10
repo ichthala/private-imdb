@@ -20,7 +20,12 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    movie_ids = Movie.pluck(:id)
+    if movie_ids.include?(params[:id])
+      @movie = Movie.find(params[:id])
+    else
+      @movie = Imdb::Movie.new(params[:id])
+    end
   end
 
   def edit

@@ -6,6 +6,7 @@ class CreateMovies < ActiveRecord::Migration
       t.text :plot
       t.string :mpaa_rating
       t.integer :rating
+      t.boolean :favorited, default: false
       t.timestamps
     end
   end

@@ -1,0 +1,16 @@
+<h1><%= @movie.title %></h1>
+
+<% if @movie.rating %>
+  <h2>Your rating: <%= @movie.rating %></h2>
+<% end %>
+
+<p>Released <%= @movie.year %> | Rated <%= @movie.mpaa_rating %></p>
+<p><%= @movie.plot %></p>
+
+<form action="/movies" method="post">
+  <button>Save</button>
+</form>
+
+<form action="/movies/favorite" method="post">
+  <button>Save & Favorite</button>
+</form>

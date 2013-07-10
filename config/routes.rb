@@ -4,6 +4,8 @@ MovieApp::Application.routes.draw do
 
   get '/movies/search' => 'movies#search'
 
+  post '/movies/favorite' => 'movies#favorite'
+
   resources :movies
 
   # The priority is based upon order of creation:

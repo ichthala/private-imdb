@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(:version => 20130710194235) do
     t.text     "plot"
     t.string   "mpaa_rating"
     t.integer  "rating"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "favorited",   :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end

@@ -1,5 +1,7 @@
 <h1>Movies Found:</h1>
 
+<ul>
 <% @movies.each do |movie| %>
-  <%= movie.title %>
+  <li><%= link_to( movie.title, "/movies/#{movie.id}" ) %></li>
 <% end %>
+</ul>
