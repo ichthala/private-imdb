@@ -15,10 +15,11 @@ ActiveRecord::Schema.define(:version => 20130710194235) do
 
   create_table "movies", :force => true do |t|
     t.string   "title"
+    t.text     "poster"
     t.string   "year"
     t.text     "plot"
     t.string   "mpaa_rating"
-    t.integer  "rating"
+    t.integer  "my_rating"
     t.boolean  "favorited",   :default => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
