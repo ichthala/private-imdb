@@ -4,13 +4,15 @@ MovieApp::Application.routes.draw do
 
   get '/movies/search' => 'movies#search'
 
+  resources :movies
+  resources :actors
+
+
   post '/movies/:id/favorite' => 'movies#favorite'
 
   post 'movies/:id/up_rating' => 'movies#up_rating'
 
   post '/movies/:id/down_rating' => 'movies#down_rating'
-
-  resources :movies
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

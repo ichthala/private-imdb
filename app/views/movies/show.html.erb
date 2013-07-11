@@ -16,6 +16,22 @@
 <p>Released <%= @movie.year %> | <%= @movie.mpaa_rating %></p>
 <p><%= @movie.plot %></p>
 
+<% if defined? @movie.cast_members %>
+  <% movie_actor_names = @movie.cast_members %>
+<% elsif defined? @movie.actors %>
+  <% movie_actor_names = [] %>
+  <% @movie.actors.each do |actor| %>
+    <% movie_actor_names << actor.name %>
+  <% end %>
+<% end %>
+
+<h3>Featuring:</h3>
+<ul>
+  <% movie_actor_names.each do |name| %>
+  <li><%= name %></li>
+  <% end %>
+</ul>
+
 <% if defined? @movie.my_rating %>
 <% # determines whether movie is in database or not %>
   <form action="/movies/<%= @movie.id %>/favorite" method="post">
