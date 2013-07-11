@@ -4,7 +4,7 @@
 <% @movies.each do |movie| %>
   <li>
 
-    <%= link_to( movie.title, "movies/#{movie.id}" ) %>
+    <%= link_to( movie.title, "/movies/#{movie.id}" ) %>
 
     <form action="/movies" method="post">
       <input type="hidden" name="id" value="<%= movie.id %>">
