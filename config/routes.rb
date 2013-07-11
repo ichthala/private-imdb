@@ -3,16 +3,19 @@ MovieApp::Application.routes.draw do
   root :to => 'movies#index'
 
   get '/movies/search' => 'movies#search'
+  get '/search_results/:id' => 'movies#result_show'
 
-  resources :movies
-  resources :actors
-
-
+  post '/movies/:id' => 'movies#create', as: 'movie_create'
   post '/movies/:id/favorite' => 'movies#favorite'
+  post '/movies/:id/favorite_result' => 'movies#favorite_result', as: 'favorite_result'
+  post '/movies/:id/destroy' => 'movies#destroy', as: 'movie_destroy'
 
   post 'movies/:id/up_rating' => 'movies#up_rating'
 
   post '/movies/:id/down_rating' => 'movies#down_rating'
+
+  resources :movies
+  resources :actors
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

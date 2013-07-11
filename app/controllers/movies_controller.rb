@@ -18,28 +18,25 @@ class MoviesController < ApplicationController
   end
 
   def favorite
-    movie_ids = Movie.pluck(:id)
-    if movie_ids.include?(params[:id].to_i)
-      movie = Movie.find(params[:id])
-      movie.my_rating = 100
-      movie.favorited = true
-      movie.save
-      redirect_to('/movies')
-    else
-      # THIS IS REALLY UGLY AND UN-DRY. WHAT DO I DO??
-      # XXX
-      imdb_movie = Imdb::Movie.new(params[:id])
-      movie = Movie.new
-      movie.title = imdb_movie.title
-      movie.poster = imdb_movie.poster
-      movie.year = imdb_movie.year
-      movie.plot = imdb_movie.plot
-      movie.mpaa_rating = imdb_movie.mpaa_rating
-      movie.my_rating = 100
-      movie.favorited = true
-      movie.save
-      redirect_to('/movies')
-    end
+    movie = Movie.find(params[:id])
+    movie.my_rating = 100
+    movie.favorited = true
+    movie.save
+    redirect_to('/movies')
+  end
+
+  def favorite_result
+    imdb_movie = Imdb::Movie.new(params[:id])
+    movie = Movie.new
+    movie.title = imdb_movie.title
+    movie.poster = imdb_movie.poster
+    movie.year = imdb_movie.year
+    movie.plot = imdb_movie.plot
+    movie.mpaa_rating = imdb_movie.mpaa_rating
+    movie.my_rating = 100
+    movie.favorited = true
+    movie.save
+    redirect_to('/movies')
   end
 
   def search
@@ -72,13 +69,13 @@ class MoviesController < ApplicationController
   end
 
   def show
-    movie_ids = Movie.pluck(:id)
-    # binding.pry
-    if movie_ids.include?(params[:id].to_i)
-      @movie = Movie.find(params[:id])
-    else
-      @movie = Imdb::Movie.new(params[:id])
-    end
+    @movie = Movie.find(params[:id])
+    @movie_actor_names = @movie.actors.map { |actor| actor.name }
+  end
+
+  def result_show
+    @movie = Imdb::Movie.new(params[:id])
+    @movie_actor_names = @movie.cast_members
   end
 
   def edit

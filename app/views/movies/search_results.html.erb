@@ -4,16 +4,11 @@
 <% @movies.each do |movie| %>
   <li>
 
-    <%= link_to( movie.title, "/movies/#{movie.id}" ) %>
+    <%= link_to( movie.title, "/search_results/#{movie.id}" ) %>
 
-    <form action="/movies" method="post">
-      <input type="hidden" name="id" value="<%= movie.id %>">
-      <button>Save</button>
-    </form>
+    <%= button_to "Save", movie_create_path(movie.id) %>
 
-    <form action="/movies/favorite" method="post">
-      <button>Save & Favorite</button>
-    </form>
+    <%= button_to "Save & Favorite", "/movies/#{movie.id}/favorite_result" %>
 
   </li>
 <% end %>
