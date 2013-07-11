@@ -4,7 +4,11 @@ MovieApp::Application.routes.draw do
 
   get '/movies/search' => 'movies#search'
 
-  post '/movies/favorite' => 'movies#favorite'
+  post '/movies/:id/favorite' => 'movies#favorite'
+
+  post 'movies/:id/up_rating' => 'movies#up_rating'
+
+  post '/movies/:id/down_rating' => 'movies#down_rating'
 
   resources :movies
 

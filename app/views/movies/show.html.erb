@@ -1,35 +1,41 @@
 <h1><%= @movie.title %></h1>
 
+<% if defined? @movie.favorited && @movie.favorited %>
+<p class="favorited">FAVORITED</p>
+<% end %>
+
 <%= image_tag(@movie.poster, width: 500) %>
 
 <% if defined? @movie.my_rating %>
-  <h2>Your rating: <%= @movie.my_rating %></h2>
+  <h2>Your rating: <%= @movie.my_rating %>
+    <%= link_to("<i class='icon-plus-sign'></i>".html_safe, "/movies/#{@movie.id}/up_rating", method: :post) %>
+    <%= link_to("<i class='icon-minus-sign'></i>".html_safe, "/movies/#{@movie.id}/down_rating", method: :post) %>
+  </h2>
 <% end %>
 
 <p>Released <%= @movie.year %> | <%= @movie.mpaa_rating %></p>
 <p><%= @movie.plot %></p>
 
-<form action="/movies" method="post">
-  <input type="hidden" name="id" value="<%= @movie.id %>">
-  <button>Save</button>
-</form>
-
-
-
-<form action="/movies/favorite" method="post">
-  <% if defined? @movie.my_rating %>
-  <% # determines whether movie is in database or not %>
-    <button>Save & Favorite</button>
-  <% else %>
-    <button>Favorite</button>
-  <% end %>
-</form>
-
 <% if defined? @movie.my_rating %>
+<% # determines whether movie is in database or not %>
+  <form action="/movies/<%= @movie.id %>/favorite" method="post">
+    <button>Favorite</button>
+  </form>
 
   <form action="/movies/<%= @movie.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button>Delete</button>
+  </form>
+
+<% else %>
+
+  <form action="/movies" method="post">
+    <input type="hidden" name="id" value="<%= @movie.id %>">
+    <button>Save</button>
+  </form>
+
+  <form action="/movies/<%= @movie.id %>/favorite" method="post">
+    <button>Save & Favorite</button>
   </form>
 
 <% end %>

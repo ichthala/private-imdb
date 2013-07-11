@@ -57,3 +57,5 @@ group :development, :test do
 end
 
 gem 'imdb'
+
+gem 'font-awesome-sass-rails', '3.0.0.1'
