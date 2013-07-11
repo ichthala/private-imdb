@@ -6,11 +6,11 @@ ALICE M.
 All the requested features are basically working.
 
 Still left to do:
-*Add more partials if any are needed (I'm not sure...)
-*Restrict a movie rating to the 0-100 range.
-*Pretty up the CSS
-*Figure out how to reload the show movie page without scrolling to top? (for + and - buttons)
-**This seems to require some Javascript
+-Add more partials if any are needed (I'm not sure...)
+-Restrict a movie rating to the 0-100 range.
+-Pretty up the CSS
+-Figure out how to reload the show movie page without scrolling to top? (for + and - buttons)
+--This seems to require some Javascript
 
 
 
