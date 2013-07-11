@@ -35,6 +35,10 @@ class MoviesController < ApplicationController
     movie.mpaa_rating = imdb_movie.mpaa_rating
     movie.my_rating = 100
     movie.favorited = true
+    imdb_movie.cast_members.map do |cast_member|
+      actor = Actor.find_or_create_by_name(name: cast_member)
+      movie.actors << actor
+    end
     movie.save
     redirect_to('/movies')
   end
@@ -60,7 +64,7 @@ class MoviesController < ApplicationController
     movie.plot = imdb_movie.plot
     movie.mpaa_rating = imdb_movie.mpaa_rating
     movie.my_rating = 50
-    imdb_movie.cast_members.each do |cast_member|
+    imdb_movie.cast_members.map do |cast_member|
       actor = Actor.find_or_create_by_name(name: cast_member)
       movie.actors << actor
     end

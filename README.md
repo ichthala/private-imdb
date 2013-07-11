@@ -3,9 +3,11 @@ WDI_Homework
 
 ALICE M.
 
-All of the requested features are working. The only things I'm missing and still confused about are PARTIALS. I have a couple partials working (basic movie and actor), but I'm not sure if I should add some to the movie show page...?
+All the requested features are basically working.
 
-I could also:
+Still left to do:
+*Add more partials if any are needed (I'm not sure...)
+*Restrict a movie rating to the 0-100 range.
 *Pretty up the CSS
 *Figure out how to reload the show movie page without scrolling to top? (for + and - buttons)
 **This seems to require some Javascript
