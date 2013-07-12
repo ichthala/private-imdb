@@ -1,0 +1,3 @@
+<%= button_to "Save", movie_create_path(@movie.id) %>
+
+<%= button_to "Save & Favorite", movie_create_path( { id: @movie.id, favorite: "y" } )%>

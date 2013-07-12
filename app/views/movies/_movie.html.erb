@@ -1,2 +1,4 @@
-  <%= link_to movie.title, movie_path(movie.id) %>
-  <br/>
+<%= link_to movie.title, movie_path(movie.id) %>
+<br/>
+<%= truncate( movie.plot, length: 50 ) %>
+<br/><br/>

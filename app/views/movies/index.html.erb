@@ -1,9 +1,6 @@
 <h1>Saved Movies</h1>
 
+<h3><%= @movies.size %> movies saved</h3>
 <%= render @movies %>
 
-<p>Search for movies to add:
-  <form action="/movies/search" method="get">
-    <input type="text" name="search_term">
-  </form>
-</p>
+

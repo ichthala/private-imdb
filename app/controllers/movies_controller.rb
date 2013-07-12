@@ -25,24 +25,6 @@ class MoviesController < ApplicationController
     redirect_to('/movies')
   end
 
-  def favorite_result
-    imdb_movie = Imdb::Movie.new(params[:id])
-    movie = Movie.new
-    movie.title = imdb_movie.title
-    movie.poster = imdb_movie.poster
-    movie.year = imdb_movie.year
-    movie.plot = imdb_movie.plot
-    movie.mpaa_rating = imdb_movie.mpaa_rating
-    movie.my_rating = 100
-    movie.favorited = true
-    imdb_movie.cast_members.map do |cast_member|
-      actor = Actor.find_or_create_by_name(name: cast_member)
-      movie.actors << actor
-    end
-    movie.save
-    redirect_to('/movies')
-  end
-
   def search
     @movies = Imdb::Search.new(params[:search_term]).movies
     render "search_results"
@@ -63,7 +45,13 @@ class MoviesController < ApplicationController
     movie.year = imdb_movie.year
     movie.plot = imdb_movie.plot
     movie.mpaa_rating = imdb_movie.mpaa_rating
-    movie.my_rating = 50
+    binding.pry
+    if params[:favorite] == "y"
+      movie.my_rating = 100
+      movie.favorited = true
+    else
+      movie.my_rating = 50
+    end
     imdb_movie.cast_members.map do |cast_member|
       actor = Actor.find_or_create_by_name(name: cast_member)
       movie.actors << actor

@@ -1,0 +1,3 @@
+<%= button_to "Favorite", "/movies/#{@movie.id}/favorite" %>
+
+<%= button_to "Delete", movie_destroy_path(@movie.id), method: :delete %>

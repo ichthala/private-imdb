@@ -7,8 +7,8 @@ MovieApp::Application.routes.draw do
 
   post '/movies/:id' => 'movies#create', as: 'movie_create'
   post '/movies/:id/favorite' => 'movies#favorite'
-  post '/movies/:id/favorite_result' => 'movies#favorite_result', as: 'favorite_result'
-  post '/movies/:id/destroy' => 'movies#destroy', as: 'movie_destroy'
+  # post '/movies/:id/' => 'movies#favorite_result', as: 'favorite_result'
+  delete '/movies/:id/destroy' => 'movies#destroy', as: 'movie_destroy'
 
   post 'movies/:id/up_rating' => 'movies#up_rating'
 

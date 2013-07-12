@@ -5,8 +5,7 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+gem 'pg', group: :production
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,6 +37,8 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :development, :test do
+  gem 'sqlite3'
+
   gem 'pry-rails'           # Causes rails console to open pry
                             # https://github.com/rweng/pry-rails
   gem 'pry-debugger'        # Adds step, next, finish, and continue commands and breakpoints

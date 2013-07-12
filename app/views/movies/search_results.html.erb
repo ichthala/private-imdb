@@ -1,14 +1,14 @@
 <h1>Movies Found:</h1>
 
+<h3><%= @movies.size %> search results</h3>
 <ul>
 <% @movies.each do |movie| %>
   <li>
 
+    <% @movie = movie %>
     <%= link_to( movie.title, "/search_results/#{movie.id}" ) %>
 
-    <%= button_to "Save", movie_create_path(movie.id) %>
-
-    <%= button_to "Save & Favorite", "/movies/#{movie.id}/favorite_result" %>
+    <%= buttons %>
 
   </li>
 <% end %>

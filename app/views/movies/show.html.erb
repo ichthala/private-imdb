@@ -6,11 +6,12 @@
 
 <%= image_tag(@movie.poster, width: 500) %>
 
-<h2>Your rating: <%= @movie.my_rating %>
+<h2>Your rating: <%= number_to_percentage(@movie.my_rating, precision: 0) %>
   <%= link_to("<i class='icon-plus-sign'></i>".html_safe, "/movies/#{@movie.id}/up_rating", method: :post) %>
   <%= link_to("<i class='icon-minus-sign'></i>".html_safe, "/movies/#{@movie.id}/down_rating", method: :post) %>
 </h2>
 
+<p>Last updated: <%= @movie.updated_at %>
 <p>Released <%= @movie.year %> | <%= @movie.mpaa_rating %></p>
 <p><%= @movie.plot %></p>
 
@@ -21,6 +22,4 @@
   <% end %>
 </ul>
 
-<%= button_to "Favorite", "/movies/#{@movie.id}/favorite" %>
-
-<%= button_to "Delete", movie_destroy_path(@movie.id) %>
+<%= buttons %>
